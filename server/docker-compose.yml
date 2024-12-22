@@ -1,12 +1,12 @@
 services:
   user-service:
     container_name: user-service
-    build:
-      context: ./services/user
-      dockerfile: Dockerfile
+    image: user-service
+    build: ./services/user
     ports:
       - "4001:4001"
-    volumes:
-      - ./services/user:/usr/local/app
+    # volumes kalau dibuka waktu deploy, build compose up, muncul error dotenv module not found  
+    # volumes:
+    #   - ./services/user:/usr/local/app
     env_file:
       - ./services/user/.env
