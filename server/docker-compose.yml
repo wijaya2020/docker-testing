@@ -1,12 +1,12 @@
-version: '3.3'
-
 services:
   user-service:
     container_name: user-service
-    image: user-service
-    build: ./services/user
+    build:
+      context: ./services/user
+      dockerfile: Dockerfile
     ports:
       - "4001:4001"
     volumes:
       - ./services/user:/usr/local/app
-
+    env_file:
+      - ./services/user/.env
