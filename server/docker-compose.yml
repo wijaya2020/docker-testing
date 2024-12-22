@@ -4,8 +4,9 @@ services:
     image: user-service
     build: ./services/user
     ports:
-      - "4001:4001"
-    # volumes kalau dibuka waktu deploy, build compose up, muncul error dotenv module not found  
+      - "8443:4001"
+    # Sometimes, bind-mounted node_modules volumes (via volumes in docker-compose.yml) can conflict with the npm install step inside the container. 
+    # To avoid this: Temporarily remove the volumes section
     # volumes:
     #   - ./services/user:/usr/local/app
     env_file:
